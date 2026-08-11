@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-h: 76px;
+    /* Fraunces: serifada com curvas suaves, sem o exagero editorial de uma display clássica.
+       Karla: humanista e um pouco mais quente que a sans "padrão", mantendo legibilidade alta. */
+    --font-serif: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-areia-100 text-tinta-600 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-marinho-700 text-areia-50;
+  }
+
+  /* Foco visível e elegante para navegação por teclado */
+  :focus-visible {
+    outline: 2px solid theme('colors.marinho.600');
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-tinta-800;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-10;
+  }
+
+  /* --- Botões ------------------------------------------------------------ */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5
+           text-[0.95rem] font-medium leading-none
+           transition-all duration-200 ease-suave
+           focus-visible:outline-2 active:scale-[0.97];
+  }
+
+  .btn-primario {
+    @apply btn bg-marinho-700 text-areia-50 shadow-[0_1px_2px_rgba(16,30,53,0.2)]
+           hover:bg-marinho-600 hover:shadow-[0_8px_24px_-10px_rgba(16,30,53,0.6)]
+           hover:-translate-y-[1px];
+  }
+
+  .btn-secundario {
+    @apply btn border border-marinho-700/25 bg-transparent text-marinho-700
+           hover:border-marinho-700/50 hover:bg-marinho-700/[0.04] hover:-translate-y-[1px];
+  }
+
+  .btn-claro {
+    @apply btn bg-areia-50 text-marinho-800 hover:bg-white hover:-translate-y-[1px]
+           shadow-[0_1px_2px_rgba(16,30,53,0.22)];
+  }
+
+  .btn-sutil {
+    @apply btn border border-tinta-400/25 bg-transparent text-tinta-600
+           hover:border-tinta-400/50 hover:bg-tinta-400/[0.05];
+  }
+
+  /* Contorno claro — para usar sobre fotografias escuras, como a hero */
+  .btn-secundario-claro {
+    @apply btn border border-areia-50/45 bg-areia-50/[0.06] text-areia-50 backdrop-blur-[2px]
+           hover:border-areia-50/70 hover:bg-areia-50/[0.14] hover:-translate-y-[1px];
+  }
+
+  /* --- Tipografia auxiliar ---------------------------------------------- */
+  .sobretitulo {
+    @apply text-[0.72rem] font-medium uppercase tracking-[0.18em] text-marinho-600;
+  }
+
+  .titulo-secao {
+    @apply mt-5 font-serif text-[1.85rem] leading-[1.2] sm:text-[2.35rem] lg:text-[2.7rem];
+  }
+
+  .texto-secao {
+    @apply mt-5 max-w-prose text-[1.02rem] leading-[1.75] text-tinta-500;
+  }
+
+  /* --- Regra decorativa -------------------------------------------------- */
+  .fio-dourado {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-dourado-400/45 to-transparent;
+  }
+}
+
+@layer utilities {
+  /* Textura sutil de papel — evita o "chapado" digital */
+  .textura-papel {
+    background-image: radial-gradient(
+        circle at 1px 1px,
+        rgba(24, 43, 72, 0.05) 1px,
+        transparent 0
+      );
+    background-size: 22px 22px;
+  }
+}
+
+/* ==========================================================================
+   ANIMAÇÕES DE SCROLL
+   Aplicadas pelo componente <Reveal>. Discretas: opacidade + deslocamento
+   vertical curto. Nada de parallax intenso ou movimento chamativo.
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal[data-visivel='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-escala {
+  opacity: 0;
+  transform: scale(0.985);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-escala[data-visivel='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Linha vertical da narrativa "Como funciona" */
+.linha-progresso {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.linha-progresso[data-visivel='true'] {
+  transform: scaleY(1);
+}
+
+/* Traço horizontal do timeline "Como funciona" (desktop) */
+.linha-progresso-h {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.linha-progresso-h[data-visivel='true'] {
+  transform: scaleX(1);
+}
+
+/* Zoom suave de entrada no vídeo em tela cheia do CTA final */
+.video-zoom-entrada {
+  transform: scale(1.12);
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.video-zoom-entrada[data-visivel='true'] {
+  transform: scale(1);
+}
+
+/* Accordion suave */
+.acordeao-conteudo {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.acordeao-conteudo[data-aberto='true'] {
+  grid-template-rows: 1fr;
+}
+
+.acordeao-conteudo > div {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   ASSINATURA VISUAL — o "arco/portal"
+   Um recorte em arco (comum em vãos e janelas de casas brasileiras) usado
+   com moderação nas fotografias e em dois divisores de seção. Representa
+   a ideia de um limiar — uma porta que se abre para orientação — sem
+   recorrer a símbolos jurídicos clichês.
+   ========================================================================== */
+.recorte-arco {
+  clip-path: url(#arco-jk);
+}
+
+/* Cortina que revela o título da hero — o "portal" se abre no carregamento */
+.cortina-abertura {
+  transform-origin: right center;
+}
+
+/* Traço do arco decorativo se desenhando (usado nos divisores de seção) */
+.arco-tracado {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.arco-tracado[data-visivel='true'] {
+  animation: desenhar-arco 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Transição de imagens da hero — crossfade mais longo e suave. O zoom
+   ("respirar") roda contínuo e independente do crossfade, em vez de
+   reiniciar toda vez que a foto entra/sai — isso é o que causava aquele
+   corte seco e "quadrado" ao trocar de imagem. */
+.hero-slide {
+  opacity: 0;
+  transition: opacity 2.8s cubic-bezier(0.45, 0, 0.15, 1);
+}
+
+.hero-slide[data-ativo='true'] {
+  opacity: 1;
+}
+
+.hero-slide img {
+  animation: hero-respirar 24s ease-in-out infinite;
+}
+
+@keyframes hero-respirar {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.055);
+  }
+}
+
+/* ==========================================================================
+   ACESSIBILIDADE — respeita a preferência do sistema por menos movimento
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal,
+  .reveal-escala {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .linha-progresso {
+    transform: scaleY(1) !important;
+  }
+
+  .linha-progresso-h {
+    transform: scaleX(1) !important;
+  }
+
+  .video-zoom-entrada {
+    transform: scale(1) !important;
+    transition: none !important;
+  }
+
+  .hero-slide img {
+    animation: none !important;
+  }
+
+  .cortina-abertura {
+    transform: scaleX(0) !important;
+  }
+
+  .arco-tracado {
+    stroke-dashoffset: 0 !important;
+  }
+}

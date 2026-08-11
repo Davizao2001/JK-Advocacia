@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.DS_Store
+*.log
+.env*.local
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# Cópia de trabalho duplicada (não faz parte do repositório)
+/jk-advocacia/
+# Fotos e vídeos brutos de origem (não usados pelo site, só na edição)
+/imagem/
+# Backups antigos de código
+*.zip

@@ -1,0 +1,23 @@
+IMAGENS DO SITE — JK ADVOCACIA
+==============================
+
+Os arquivos desta pasta são PROVISÓRIOS. Basta substituí-los por fotografias
+reais mantendo exatamente os mesmos nomes, e o site se atualiza sozinho.
+
+  hero-1.jpg            1200 x 1600 (retrato)   — foto principal da advogada
+  hero-2.jpg            1200 x 1600 (retrato)   — segunda foto da transição
+  hero-3.jpg            1200 x 1600 (retrato)   — terceira foto da transição
+  acolhimento.jpg       1400 x 1050 (paisagem)  — ambiente / conversa
+  kerab.jpg             1000 x 1250 (retrato)   — Kerab de Assis
+  area-familia.jpg      1400 x  788 (16:9)      — Direito de Família
+  area-trabalhista.jpg  1400 x  788 (16:9)      — Direito Trabalhista
+  og.jpg                1200 x  630             — imagem de compartilhamento
+
+Quer mais ou menos fotos na hero? Edite a lista `imagens.hero` em
+src/content/site.ts. Com uma única imagem, a transição é desativada
+automaticamente.
+
+Orientações para as fotos:
+- fotografias reais, ambientes brasileiros plausíveis;
+- serenidade e atenção, sem poses rígidas para a câmera;
+- nada de documentos legíveis, clientes identificáveis ou cenas de tribunal.
