@@ -15,20 +15,27 @@ export default function Acolhimento() {
       <div className="container-site grid items-center gap-12 lg:grid-cols-[0.82fr_1fr] lg:gap-20">
         <Reveal
           variante="escala"
-          className="relative order-2 mx-auto w-full max-w-sm lg:order-1 lg:mx-0"
+          className="relative order-2 mx-auto w-full max-w-sm lg:order-1 lg:mx-0 lg:max-w-md"
         >
           <div className="relative">
             <div
               aria-hidden="true"
               className="absolute -bottom-4 -right-4 h-full w-full border border-dourado-500/50"
             />
-            <div className="relative aspect-[4/5] w-full overflow-hidden">
+            <div className="relative aspect-[4/5] w-full overflow-hidden shadow-[0_35px_70px_-30px_rgba(15,23,42,0.4)]">
               <Image
                 src={site.imagens.acolhimento.src}
                 alt={site.imagens.acolhimento.alt}
                 fill
+                quality={95}
                 sizes="(max-width: 1024px) 70vw, 32vw"
                 className="object-cover"
+              />
+              {/* Leve véu na paleta do site — aproxima o tom frio da foto de
+                  estoque do restante da identidade visual, sem esconder a cena. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-marinho-900/30 via-transparent to-dourado-500/10 mix-blend-multiply"
               />
             </div>
           </div>
