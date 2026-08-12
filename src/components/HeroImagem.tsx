@@ -29,6 +29,7 @@ export default function HeroImagem({
             alt={i === 0 ? img.alt : ''}
             fill
             priority={i === 0}
+            quality={95}
             sizes="100vw"
             style={{ objectPosition: img.posicao }}
             className="object-cover"
