@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Reveal from './ui/Reveal';
 import ContadorAnimado from './ui/ContadorAnimado';
 import { IconeEstrela, IconeSeta } from './ui/Icones';
@@ -10,9 +11,24 @@ export default function Avaliacoes() {
     <section
       id="avaliacoes"
       aria-labelledby="avaliacoes-titulo"
-      className="scroll-mt-24 bg-areia-100 py-20 sm:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-areia-100 py-20 sm:py-28"
     >
-      <div className="container-site">
+      {/* Textura de fundo — mesma assinatura de arco e traços dourados do
+          Acolhimento, aqui em tom frio: reforça a serenidade de uma seção
+          sobre confiança e avaliações. */}
+      <div aria-hidden="true" className="absolute inset-0">
+        <Image
+          src="/images/fundo-avaliacoes.jpg"
+          alt=""
+          fill
+          quality={90}
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-areia-100/60" />
+      </div>
+
+      <div className="container-site relative">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <p className="sobretitulo">{avaliacoes.sobretitulo}</p>
