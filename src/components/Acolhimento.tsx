@@ -9,10 +9,25 @@ export default function Acolhimento() {
       aria-labelledby="acolhimento-titulo"
       className="relative overflow-hidden bg-areia-200 pb-20 pt-12 sm:pb-28 sm:pt-16"
     >
-      {/* Primeiro divisor narrativo: da apresentação para o convite ao acolhimento */}
-      <DivisorArco className="mb-12 sm:mb-16" />
+      {/* Textura de fundo — a mesma assinatura de arco e traços dourados da
+          identidade visual, cobrindo a seção inteira atrás da foto e do
+          texto. Véu bem leve para o padrão ficar visível de verdade. */}
+      <div aria-hidden="true" className="absolute inset-0">
+        <Image
+          src="/images/fundo-acolhimento.jpg"
+          alt=""
+          fill
+          quality={90}
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-areia-200/25" />
+      </div>
 
-      <div className="container-site grid items-center gap-12 lg:grid-cols-[0.82fr_1fr] lg:gap-20">
+      {/* Primeiro divisor narrativo: da apresentação para o convite ao acolhimento */}
+      <DivisorArco className="relative mb-12 sm:mb-16" />
+
+      <div className="container-site relative grid items-center gap-12 lg:grid-cols-[0.82fr_1fr] lg:gap-20">
         <Reveal
           variante="escala"
           className="relative order-2 mx-auto w-full max-w-sm lg:order-1 lg:mx-0 lg:max-w-md"
