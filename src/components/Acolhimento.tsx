@@ -10,17 +10,20 @@ export default function Acolhimento() {
       className="relative overflow-hidden bg-areia-200 pb-20 pt-12 sm:pb-28 sm:pt-16"
     >
       {/* Textura de fundo — a mesma assinatura de arco e traços dourados da
-          identidade visual, num tom areia que conversa com o bg da seção. */}
-      <div aria-hidden="true" className="absolute inset-0">
+          identidade visual. Fica ancorada no topo, na altura natural da
+          imagem (em vez de esticada pela seção inteira, o que cortava
+          exatamente os detalhes — arco e traços — para fora da tela), e
+          se dissolve suavemente no tom areia da seção. */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[420px] sm:h-[560px] lg:h-[640px]">
         <Image
           src="/images/fundo-acolhimento.jpg"
           alt=""
           fill
           quality={90}
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-areia-200/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-areia-200/10 via-areia-200/45 to-areia-200" />
       </div>
 
       {/* Primeiro divisor narrativo: da apresentação para o convite ao acolhimento */}
