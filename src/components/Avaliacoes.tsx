@@ -14,19 +14,18 @@ export default function Avaliacoes() {
       className="relative scroll-mt-24 overflow-hidden bg-areia-100 py-20 sm:py-28"
     >
       {/* Textura de fundo — mesma assinatura de arco e traços dourados do
-          Acolhimento, aqui em tom frio. Ancorada no topo na altura natural
-          da imagem, para não esticar (e cortar) os detalhes pela seção
-          inteira, dissolvendo-se no tom areia-100 da seção. */}
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[420px] sm:h-[520px] lg:h-[600px]">
+          Acolhimento, aqui em tom frio, cobrindo a seção inteira atrás do
+          texto e dos cards. Véu bem leve para o padrão ficar visível. */}
+      <div aria-hidden="true" className="absolute inset-0">
         <Image
           src="/images/fundo-avaliacoes.jpg"
           alt=""
           fill
           quality={90}
           sizes="100vw"
-          className="object-cover object-top"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-areia-100/10 via-areia-100/45 to-areia-100" />
+        <div className="absolute inset-0 bg-areia-100/25" />
       </div>
 
       <div className="container-site relative">
